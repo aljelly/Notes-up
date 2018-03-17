@@ -83,7 +83,7 @@ public class ENotes.PagesList : Gtk.Box {
             if (b > a) return 1;
 
             return 0;
-            
+
             // For sorting strings
             // return a.collate (b);
         });
@@ -110,18 +110,24 @@ public class ENotes.PagesList : Gtk.Box {
 
         //minus_button.get_style_context ().add_class ("flat");
         //plus_button.get_style_context ().add_class ("flat");
+        var plus_button_icon = plus_button.get_image ();
+        var minus_button_icon = minus_button.get_image ();
 
-        plus_button.get_image ().margin_left = 4;
-        plus_button.get_image ().margin_right = 4;
-        minus_button.get_image ().margin_left = 4;
-        minus_button.get_image ().margin_right = 4;
+        plus_button_icon.margin_left = 2;
+        plus_button_icon.margin_right = 2;
+        minus_button_icon.margin_left = 2;
+        minus_button_icon.margin_right = 2;
 
-        notebook_name.halign = Gtk.Align.START;
-        page_total.halign = Gtk.Align.START;
+        plus_button_icon.get_style_context ().add_class ("list-footer-icon");
+        minus_button_icon.get_style_context ().add_class ("list-footer-icon");
+
+        notebook_name.halign = Gtk.Align.END;
+        page_total.halign = Gtk.Align.END;
         minus_button.halign = Gtk.Align.START;
-        minus_button.visible = false;
+        minus_button.visible = true;
         separator.visible = false;
-        notebook_name.hexpand = true;
+        notebook_name.hexpand = false;
+        page_total.hexpand = true;
         minus_button.can_focus = false;
         plus_button.can_focus = false;
         minus_button.no_show_all = true;
@@ -130,14 +136,18 @@ public class ENotes.PagesList : Gtk.Box {
 
         notebook_name.ellipsize = Pango.EllipsizeMode.END;
         notebook_name.get_style_context ().add_class ("h4");
+        notebook_name.get_style_context ().add_class ("list-footer-label");
         notebook_name.margin_top = 0;
         notebook_name.margin_bottom = 0;
         notebook_name.margin_left = 6;
         notebook_name.margin_right = 6;
+
         page_total.margin_right = 6;
+        page_total.get_style_context ().add_class ("h4");
+        page_total.get_style_context ().add_class ("list-footer-label");
         box.add (plus_button);
         box.add (minus_button);
-        box.add (notebook_name);
+        //box.add (notebook_name);
         box.add (page_total);
         //box.add (new Gtk.Separator (Gtk.Orientation.VERTICAL));
 
@@ -245,9 +255,9 @@ public class ENotes.PagesList : Gtk.Box {
     }
 
     private void toolbar_mode (Mode? mode) {
-        separator.visible = (mode == Mode.EDIT);
-        minus_button.visible = (mode == Mode.EDIT);
-        page_total.visible = !(mode == Mode.EDIT);
+        //separator.visible = (mode == Mode.EDIT);
+        //minus_button.visible = (mode == Mode.EDIT);
+        //page_total.visible = !(mode == Mode.EDIT);
     }
 
     private void connect_signals () {

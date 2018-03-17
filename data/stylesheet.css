@@ -6,10 +6,20 @@
 }
 
 .preview-label {
-	opacity:1;
+    opacity:1;
 }
 
 .date-time-label {
 	opacity:0.6;
 	font-size:0.9em;
+}
+
+.list-footer-label {
+	padding-top:4px;
+	padding-bottom:4px;
+	color:#666;
+}
+
+.list-footer-icon {
+	color:#4d4d4d;
 }
