@@ -86,8 +86,8 @@ public class ENotes.PageItem : Gtk.ListBoxRow {
         grid.add (line3);
         grid.add (separator);
 
-        load_data ();
         this.show_all ();
+        load_data ();
     }
 
     public void trash_page () {
@@ -102,9 +102,15 @@ public class ENotes.PageItem : Gtk.ListBoxRow {
         } else {
             date_string = time.format ("%l:%M %p, %a, %e %b %Y");
         }
-        date_string = date_string.chug ();
+        date_string = date_string.strip ();
         this.line3.label = date_string;
-        this.line2.label = page.subtitle;
+
+        if (page.subtitle == "") {
+            this.line2.hide ();
+        } else {
+            this.line2.label = page.subtitle;
+            this.line2.show ();
+        }
         this.line1.label = page.name;
     }
 }

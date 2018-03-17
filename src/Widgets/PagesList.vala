@@ -205,7 +205,7 @@ public class ENotes.PagesList : Gtk.Box {
         page_total.label = page_label.printf (added_pages.size);
 
         this.notebook_name.label = notebook.name.split ("§")[0] + ":";
-        listbox.show_all ();
+        //listbox.show_all ();
 
         select_page (ENotes.ViewEditStack.get_instance ().current_page);
         loading_pages = false;
