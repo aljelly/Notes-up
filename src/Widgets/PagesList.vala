@@ -105,12 +105,17 @@ public class ENotes.PagesList : Gtk.Box {
         page_total = new Gtk.Label ("");
         separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
 
-        minus_button.get_style_context ().add_class ("flat");
-        plus_button.get_style_context ().add_class ("flat");
+        //minus_button.get_style_context ().add_class ("flat");
+        //plus_button.get_style_context ().add_class ("flat");
+
+        plus_button.get_image ().margin_left = 4;
+        plus_button.get_image ().margin_right = 4;
+        minus_button.get_image ().margin_left = 4;
+        minus_button.get_image ().margin_right = 4;
 
         notebook_name.halign = Gtk.Align.START;
-        page_total.halign = Gtk.Align.END;
-        minus_button.halign = Gtk.Align.END;
+        page_total.halign = Gtk.Align.START;
+        minus_button.halign = Gtk.Align.START;
         minus_button.visible = false;
         separator.visible = false;
         notebook_name.hexpand = true;
@@ -122,20 +127,22 @@ public class ENotes.PagesList : Gtk.Box {
 
         notebook_name.ellipsize = Pango.EllipsizeMode.END;
         notebook_name.get_style_context ().add_class ("h4");
+        notebook_name.margin_top = 0;
+        notebook_name.margin_bottom = 0;
         notebook_name.margin_left = 6;
         notebook_name.margin_right = 6;
         page_total.margin_right = 6;
-
+        box.add (plus_button);
+        box.add (minus_button);
         box.add (notebook_name);
         box.add (page_total);
-        box.add (new Gtk.Separator (Gtk.Orientation.VERTICAL));
-        box.add (minus_button);
-        box.add (separator);
-        box.add (plus_button);
+        //box.add (new Gtk.Separator (Gtk.Orientation.VERTICAL));
+
+        //box.add (separator);
 
         frame.set_sensitive (false);
-        frame.get_style_context ().add_class ("toolbar");
-        frame.get_style_context ().add_class ("inline-toolbar");
+        //frame.get_style_context ().add_class ("toolbar");
+        frame.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
 
         frame.add (box);
         frame.show_all ();
